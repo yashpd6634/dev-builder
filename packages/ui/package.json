@@ -22,10 +22,15 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
+    "@tsparticles/engine": "^3.5.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.5.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "framer-motion": "^11.3.21",
     "lucide-react": "^0.395.0",
-    "tailwind-merge": "^2.3.0",
+    "next-themes": "^0.3.0",
+    "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "exports": {
@@ -33,6 +38,7 @@
     "./postcss.config": "./postcss.config.mjs",
     "./tailwind.config": "./tailwind.config.ts",
     "./lib/*": "./src/lib/*.ts",
-    "./components/*": "./src/components/*.tsx"
+    "./components/*": "./src/components/*.tsx",
+    "./providers/*": "./src/providers/*.tsx"
   }
 }
