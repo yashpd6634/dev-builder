@@ -40,7 +40,7 @@ export default function Page() {
         </div>
       </section>
       <InfiniteMovingCards
-        className="md:mt-[30rem] mt-[-100px]"
+        className="md:mt-[18rem] mt-[-100px]"
         items={clients}
         direction="right"
         speed="slow"

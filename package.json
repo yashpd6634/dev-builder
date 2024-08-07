@@ -13,6 +13,7 @@
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "prettier": "^3.1.1",
+    "prisma": "^5.17.0",
     "turbo": "latest"
   },
   "packageManager": "npm@10.2.3",
@@ -21,6 +22,7 @@
     "./packages/*"
   ],
   "dependencies": {
+    "@clerk/nextjs": "^4.29.11",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.21",
     "next-themes": "^0.3.0",

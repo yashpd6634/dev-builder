@@ -9,7 +9,7 @@ import { motion, useAnimation } from "framer-motion";
 import { cn } from "@ui/lib/utils";
 
 let ParticlesGlobal: any;
-let initParticlesEngineGlobal: any;
+let initParticlesEngineGlobal: (props: any) => any;
 async function loadParticles() {
   const { default: Particles, initParticlesEngine } = await import(
     "@tsparticles/react"
