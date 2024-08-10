@@ -1,0 +1,19 @@
+{
+  "extends": "@repo/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next",
+      },
+    ],
+    "types": ["@uploadcare/file-uploader/types/jsx"]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.js",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts", "../../packages/ui/src/lib/editor-utils.ts",
+  ],
+  "exclude": ["node_modules"],
+}
