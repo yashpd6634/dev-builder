@@ -11,7 +11,7 @@ const font = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Dev Builder.",
-  description: "Automate Your Work With Dev Builder.",
+  description: "Lets Build With Dev Builder.",
 };
 
 export default function RootLayout({

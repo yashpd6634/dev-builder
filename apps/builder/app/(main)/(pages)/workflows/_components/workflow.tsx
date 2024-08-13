@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import {
   Card,
   CardDescription,
@@ -20,12 +21,17 @@ type Props = {
 };
 
 const Workflow = ({ description, id, name, publish }: Props) => {
-    const onPublishFlow = async (event: any) => {
-      const response = await onFlowPublish(
-        id,
-        event.target.ariaChecked === "false",
-      );
-      if (response) toast.message(response);
+  const [isPublish, setIsPublish] = useState<boolean>(
+    publish == null ? false : publish == false ? false : true,
+  );
+  const handleClick =
+    (id: string) => async (event: React.MouseEvent<HTMLButtonElement>) => {
+      const isChecked = event.currentTarget.ariaChecked === "false";
+      const response = await onFlowPublish(id, isChecked);
+      if (response) {
+        toast.message(response);
+        setIsPublish(isChecked);
+      }
     };
 
   return (
@@ -63,12 +69,12 @@ const Workflow = ({ description, id, name, publish }: Props) => {
       </CardHeader>
       <div className="flex flex-col items-center gap-2 p-4">
         <Label htmlFor="airplane-mode" className="text-muted-foreground">
-          {publish! ? "On" : "Off"}
+          {isPublish ? "On" : "Off"}
         </Label>
         <Switch
           id="airplane-mode"
-          // onClick={onPublishFlow}
-          defaultChecked={publish!}
+          onClick={handleClick(id)}
+          defaultChecked={isPublish}
         />
       </div>
     </Card>
