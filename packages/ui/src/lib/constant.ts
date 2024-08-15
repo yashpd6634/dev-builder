@@ -95,11 +95,10 @@ export const products = [
 export const menuOptions = [
   { name: "Dashboard", Component: Home, href: "/dashboard" },
   { name: "Workflows", Component: Workflows, href: "/workflows" },
-  { name: "Settings", Component: Settings, href: "/settings" },
   { name: "Connections", Component: Category, href: "/connections" },
   { name: "Billing", Component: Payment, href: "/billing" },
   { name: "Templates", Component: Templates, href: "/templates" },
-  { name: "Logs", Component: Logs, href: "/logs" },
+  { name: "Settings", Component: Settings, href: "/settings" },
 ];
 
 export const CONNECTIONS: Connection[] = [
@@ -129,6 +128,15 @@ export const CONNECTIONS: Connection[] = [
     description:
       "Use slack to send notifications to team members through your own custom bot.",
     image: "/slack.png",
+    connectionKey: "slackNode",
+    accessTokenKey: "slackAccessToken",
+    slackSpecial: true,
+  },
+  {
+    title: "Teams",
+    description:
+      "Connect your Microsoft Teams to send notification and messages.",
+    image: "/teams.png",
     connectionKey: "slackNode",
     accessTokenKey: "slackAccessToken",
     slackSpecial: true,
