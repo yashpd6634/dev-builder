@@ -1,4 +1,3 @@
-import { ClerkProvider } from "@clerk/nextjs";
 import "@repo/ui/globals.css";
 import ModalProvider from "@repo/ui/providers/modal-provider";
 import { ThemeProvider } from "@repo/ui/providers/theme-provider";
@@ -20,26 +19,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <ClerkProvider
-      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-    >
-      <html lang="en">
-        <body className={font.className}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <BillingProvider>
-              <ModalProvider>
-                {children}
-                <Toaster />
-              </ModalProvider>
-            </BillingProvider>
-          </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={font.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <BillingProvider>
+            <ModalProvider>
+              {children}
+              <Toaster />
+            </ModalProvider>
+          </BillingProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }

@@ -6,6 +6,32 @@ import Payment from "@ui/components/icons/payment";
 import Settings from "@ui/components/icons/settings";
 import Workflows from "@ui/components/icons/workflows";
 import { Connection } from "./types";
+import BarChart from "@ui/components/icons/bar_chart";
+import Headphone from "@ui/components/icons/headphone";
+import Send from "@ui/components/icons/send";
+import Pipelines from "@ui/components/icons/pipelines";
+import Calendar from "@ui/components/icons/calender";
+import CheckCircle from "@ui/components/icons/check_circled";
+import Chip from "@ui/components/icons/chip";
+import Compass from "@ui/components/icons/compass";
+import Database from "@ui/components/icons/database";
+import Flag from "@ui/components/icons/flag";
+import Info from "@ui/components/icons/info";
+import LinkIcon from "@ui/components/icons/link";
+import Message from "@ui/components/icons/messages";
+import Power from "@ui/components/icons/power";
+import Receipt from "@ui/components/icons/receipt";
+import Shield from "@ui/components/icons/shield";
+import Star from "@ui/components/icons/star";
+import Tune from "@ui/components/icons/tune";
+import Video from "@ui/components/icons/video-recorder";
+import Wallet from "@ui/components/icons/wallet";
+import Warning from "@ui/components/icons/warning";
+import Person from "@ui/components/icons/person";
+import PluraCategory from "@ui/components/icons/plura-category";
+import ClipboardIcon from "@ui/components/icons/clipboardIcon";
+import Notification from "@ui/components/icons/notification";
+import Lock from "@ui/components/icons/lock";
 
 export const clients = [...new Array(10)].map((client, index) => ({
   href: `/${index + 1}.png`,
@@ -187,3 +213,151 @@ export const EditorCanvasDefaultCardTypes = {
     type: "Action",
   },
 };
+
+export const icons = [
+  {
+    value: "chart",
+    label: "Bar Chart",
+    path: BarChart,
+  },
+  {
+    value: "headphone",
+    label: "Headphones",
+    path: Headphone,
+  },
+  {
+    value: "send",
+    label: "Send",
+    path: Send,
+  },
+  {
+    value: "pipelines",
+    label: "Pipelines",
+    path: Pipelines,
+  },
+  {
+    value: "calendar",
+    label: "Calendar",
+    path: Calendar,
+  },
+  {
+    value: "settings",
+    label: "Settings",
+    path: Settings,
+  },
+  {
+    value: "check",
+    label: "Check Circled",
+    path: CheckCircle,
+  },
+  {
+    value: "chip",
+    label: "Chip",
+    path: Chip,
+  },
+  {
+    value: "compass",
+    label: "Compass",
+    path: Compass,
+  },
+  {
+    value: "database",
+    label: "Database",
+    path: Database,
+  },
+  {
+    value: "flag",
+    label: "Flag",
+    path: Flag,
+  },
+  {
+    value: "home",
+    label: "Home",
+    path: Home,
+  },
+  {
+    value: "info",
+    label: "Info",
+    path: Info,
+  },
+  {
+    value: "link",
+    label: "Link",
+    path: LinkIcon,
+  },
+  {
+    value: "lock",
+    label: "Lock",
+    path: Lock,
+  },
+  {
+    value: "messages",
+    label: "Messages",
+    path: Message,
+  },
+  {
+    value: "notification",
+    label: "Notification",
+    path: Notification,
+  },
+  {
+    value: "payment",
+    label: "Payment",
+    path: Payment,
+  },
+  {
+    value: "power",
+    label: "Power",
+    path: Power,
+  },
+  {
+    value: "receipt",
+    label: "Receipt",
+    path: Receipt,
+  },
+  {
+    value: "shield",
+    label: "Shield",
+    path: Shield,
+  },
+  {
+    value: "star",
+    label: "Star",
+    path: Star,
+  },
+  {
+    value: "tune",
+    label: "Tune",
+    path: Tune,
+  },
+  {
+    value: "videorecorder",
+    label: "Video Recorder",
+    path: Video,
+  },
+  {
+    value: "wallet",
+    label: "Wallet",
+    path: Wallet,
+  },
+  {
+    value: "warning",
+    label: "Warning",
+    path: Warning,
+  },
+  {
+    value: "person",
+    label: "Person",
+    path: Person,
+  },
+  {
+    value: "category",
+    label: "Category",
+    path: PluraCategory,
+  },
+  {
+    value: "clipboardIcon",
+    label: "Clipboard Icon",
+    path: ClipboardIcon,
+  },
+];
