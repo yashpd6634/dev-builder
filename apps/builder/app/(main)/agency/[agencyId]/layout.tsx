@@ -8,6 +8,7 @@ import {
 import { redirect } from "next/navigation";
 import React from "react";
 import BlurPage from "@ui/components/global/blur-page";
+import InfoBar from "@repo/ui/components/global/infobar";
 
 type Props = {
   children: React.ReactNode;
@@ -40,10 +41,9 @@ const layout = async ({ children, params }: Props) => {
     <div className="h-screen overflow-hidden">
       <Sidebar id={params.agencyId} type="agency" />
       <div className="md:pl-[300px]">
-        <div className="md:pl-[300px]">
-          <div className="relative">
-            <BlurPage>{children}</BlurPage>
-          </div>
+        <InfoBar notifications={allNoti} />
+        <div className="relative">
+          <BlurPage>{children}</BlurPage>
         </div>
       </div>
     </div>

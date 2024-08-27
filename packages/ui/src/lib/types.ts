@@ -1,3 +1,13 @@
+import {
+  Contact,
+  Lane,
+  Notification,
+  Prisma,
+  Role,
+  Tag,
+  Ticket,
+  User,
+} from '@prisma/client'
 import { ConnectionProviderProps } from "@ui/providers/connections-provider";
 import { z } from "zod";
 
@@ -90,3 +100,18 @@ export const nodeMapper: Record<string, string> = {
   Discord: "discordNode",
   "Google Drive": "googleNode",
 };
+
+export type NotificationWithUser =
+  | ({
+      User: {
+        id: string
+        name: string
+        avatarUrl: string
+        email: string
+        createdAt: Date
+        updatedAt: Date
+        role: Role
+        agencyId: string | null
+      }
+    } & Notification)[]
+  | undefined
