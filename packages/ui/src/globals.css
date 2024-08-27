@@ -41,6 +41,10 @@
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
     --radius: 0.5rem;
+    --blue-primary: 214.12 100% 50%;
+    --blue-primary-foreground: 0 0% 100%;
+    --purple-primary: 320, 100%, 50%;
+    --purple-primary-foreground: 0 0% 100%;
   }
 
   .dark {

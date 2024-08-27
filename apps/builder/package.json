@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.11",
+    "@clerk/themes": "^2.1.21",
     "@notionhq/client": "^2.2.15",
     "@repo/ui": "*",
     "@types/uuid": "^10.0.0",

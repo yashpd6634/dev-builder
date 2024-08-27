@@ -30,6 +30,14 @@ const config = withUt({
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
+        bluePrimary: {
+          DEFAULT: "hsl(var(--blue-primary))",
+          foreground: "hsl(var(--blue-primary-foreground))",
+        },
+        purplePrimary: {
+          DEFAULT: "hsl(var(--purple-primary))",
+          foreground: "hsl(var(--purple-primary-foreground))",
+        },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",

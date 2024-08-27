@@ -68,7 +68,7 @@ const MenuOptions = ({
     <Sheet modal={false} {...openState}>
       <SheetTrigger
         asChild
-        className="absolute left-4 top-4 z-[100] md:hidden flex"
+        className="absolute left-4 top-4 z-[100] md:!hidden flex"
       >
         <Button variant="outline" size={"icon"}>
           <Menu />
@@ -174,7 +174,7 @@ const MenuOptions = ({
                     <CommandGroup heading="Accounts">
                       {!!subAccounts
                         ? subAccounts.map((subaccount) => (
-                            <CommandItem>
+                            <CommandItem key={subaccount.id}>
                               {defaultOpen ? (
                                 <Link
                                   href={`/subaccount/${subaccount.id}`}
@@ -183,7 +183,7 @@ const MenuOptions = ({
                                   <div className="relative w-16">
                                     <Image
                                       src={subaccount.subAccountLogo}
-                                      alt="Agency Logo"
+                                      alt="subaccount Logo"
                                       fill
                                       className="rounded-md object-contain"
                                     />
@@ -223,7 +223,7 @@ const MenuOptions = ({
                         : "No Accounts"}
                     </CommandGroup>
                   </CommandList>
-                  {(user.role === "AGECNY_OWNER" ||
+                  {(user.role === "AGENCY_OWNER" ||
                     user.role === "AGENCY_ADMIN") && (
                     <SheetClose>
                       <Button
