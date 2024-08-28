@@ -6,7 +6,7 @@ import { UploadDropzone } from "@repo/ui/lib/uploadthing";
 type Props = {
   apiEndpoint: "agencyLogo" | "avatar" | "subaccountLogo";
   onChange: (url?: string) => void;
-  value?: string;
+  value?: string | null;
 };
 
 const FileUpload = ({ apiEndpoint, onChange, value }: Props) => {

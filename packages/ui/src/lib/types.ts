@@ -7,9 +7,10 @@ import {
   Tag,
   Ticket,
   User,
-} from '@prisma/client'
+} from "@prisma/client";
 import { ConnectionProviderProps } from "@ui/providers/connections-provider";
 import { z } from "zod";
+import { getAuthUserDetails, getUserPermissions } from "./queries";
 
 export const EditUserProfileSchema = z.object({
   email: z.string().email("Required"),
@@ -21,7 +22,12 @@ export const WorkflowFormSchema = z.object({
   description: z.string().min(1, "Required"),
 });
 
-export type ConnectionTypes = "Google Drive" | "Notion" | "Slack" | "Discord" | "Teams";
+export type ConnectionTypes =
+  | "Google Drive"
+  | "Notion"
+  | "Slack"
+  | "Discord"
+  | "Teams";
 
 export type Connection = {
   title: ConnectionTypes;
@@ -104,14 +110,21 @@ export const nodeMapper: Record<string, string> = {
 export type NotificationWithUser =
   | ({
       User: {
-        id: string
-        name: string
-        avatarUrl: string
-        email: string
-        createdAt: Date
-        updatedAt: Date
-        role: Role
-        agencyId: string | null
-      }
+        id: string;
+        name: string;
+        avatarUrl: string;
+        email: string;
+        createdAt: Date;
+        updatedAt: Date;
+        role: Role;
+        agencyId: string | null;
+      };
     } & Notification)[]
-  | undefined
+  | undefined;
+
+export type UserWithPermissionsAndSubAccounts = Prisma.PromiseReturnType<
+  typeof getUserPermissions
+>;
+
+export type AuthUserWithAgencySigebarOptionsSubAccounts =
+  Prisma.PromiseReturnType<typeof getAuthUserDetails>;

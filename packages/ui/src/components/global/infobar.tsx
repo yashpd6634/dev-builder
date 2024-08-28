@@ -15,6 +15,7 @@ import { Bell } from "lucide-react";
 import { Card } from "../ui/card";
 import { Switch } from "../ui/switch";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { ModeToggle } from "./mode-toggle";
 
 type Props = {
   notifications: NotificationWithUser | [];
@@ -54,7 +55,7 @@ const InfoBar = ({ notifications, role, className, subAccountId }: Props) => {
           <UserButton afterSignOutUrl="/" />
           <Sheet>
             <SheetTrigger>
-              <div className="rounded-full w-8 h-8 bg-purplePrimary flex items-center justify-center text-white">
+              <div className="rounded-full w-9 h-9 bg-purplePrimary flex items-center justify-center text-white">
                 <Bell size={17} />
               </div>
             </SheetTrigger>
@@ -114,6 +115,7 @@ const InfoBar = ({ notifications, role, className, subAccountId }: Props) => {
               )}
             </SheetContent>
           </Sheet>
+          <ModeToggle />
         </div>
       </div>
     </>
