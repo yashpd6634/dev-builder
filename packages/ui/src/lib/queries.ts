@@ -329,7 +329,7 @@ export const getNotificationAndUser = async (agencyId: string) => {
 };
 
 export const upsertSubAccount = async (subAccount: SubAccount) => {
-  if (subAccount.companyEmail) return null;
+  if (!subAccount.companyEmail) return null;
   const agencyOwner = await db.user.findFirst({
     where: {
       Agency: {
@@ -457,4 +457,22 @@ export const changeUserPermissions = async (
   } catch (error) {
     console.log("Could not change permission", error);
   }
+};
+
+export const getSubaccountDetails = async (subaccountId: string) => {
+  const response = await db.subAccount.findUnique({
+    where: {
+      id: subaccountId,
+    },
+  });
+  return response;
+};
+
+export const deleteSubAccount = async (subaccountId: string) => {
+  const response = await db.subAccount.delete({
+    where: {
+      id: subaccountId,
+    },
+  });
+  return response;
 };
