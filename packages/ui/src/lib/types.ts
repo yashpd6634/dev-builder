@@ -10,7 +10,7 @@ import {
 } from "@prisma/client";
 import { ConnectionProviderProps } from "@ui/providers/connections-provider";
 import { z } from "zod";
-import { getAuthUserDetails, getUserPermissions } from "./queries";
+import { getAuthUserDetails, getMedia, getUserPermissions } from "./queries";
 import db from "@repo/db/client";
 
 export const EditUserProfileSchema = z.object({
@@ -146,3 +146,7 @@ export type UsersWithAgencySubAccountPermissionsSidebarOptions =
   Prisma.PromiseReturnType<
     typeof __getUsersWithAgencySubAccountPermissionsSidebarOptions
   >;
+
+export type GetMediaFiles = Prisma.PromiseReturnType<typeof getMedia>;
+
+export type CreateMediaType = Prisma.MediaCreateWithoutSubaccountInput;
