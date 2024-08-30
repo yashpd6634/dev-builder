@@ -23,7 +23,7 @@ import { Button } from "../ui/button";
 import { Loader2 } from "lucide-react";
 import { useModal } from "@ui/providers/modal-provider";
 import { toast } from "sonner";
-import { onCreateWorkflow } from "@app/builder/app/(main)/(pages)/workflows/_actions/workflow-connections";
+import { onCreateWorkflow } from "@app/studio/app/(main)/(pages)/workflows/_actions/workflow-connections";
 
 type Props = {
   title?: string;

@@ -1,6 +1,6 @@
-import { postContentToWebHook } from "@app/builder/app/(main)/(pages)/connections/_actions/discord-connection";
-import { onCreateNewPageInDatabase } from "@app/builder/app/(main)/(pages)/connections/_actions/notion-connection";
-import { postMessageToSlack } from "@app/builder/app/(main)/(pages)/connections/_actions/slack-connection";
+import { postContentToWebHook } from "@app/studio/app/(main)/(pages)/connections/_actions/discord-connection";
+import { onCreateNewPageInDatabase } from "@app/studio/app/(main)/(pages)/connections/_actions/notion-connection";
+import { postMessageToSlack } from "@app/studio/app/(main)/(pages)/connections/_actions/slack-connection";
 import db from "@repo/db/client";
 import axios from "axios";
 import { headers } from "next/headers";

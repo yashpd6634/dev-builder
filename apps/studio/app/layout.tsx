@@ -9,8 +9,8 @@ import { BillingProvider } from "@repo/ui/providers/billing-provider";
 const font = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Dev Builder.",
-  description: "Lets Build With Dev Builder.",
+  title: "Dev Studio.",
+  description: "Lets Build With Dev Studio.",
 };
 
 export default function RootLayout({

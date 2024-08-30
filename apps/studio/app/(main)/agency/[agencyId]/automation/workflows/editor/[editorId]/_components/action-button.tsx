@@ -3,11 +3,11 @@ import { Option } from "./content-based-on-title";
 import { ConnectionProviderProps } from "@ui/providers/connections-provider";
 import { usePathname } from "next/navigation";
 import { Button } from "@ui/components/ui/button";
-import { postContentToWebHook } from "@app/builder/app/(main)/(pages)/connections/_actions/discord-connection";
+import { postContentToWebHook } from "@app/studio/app/(main)/(pages)/connections/_actions/discord-connection";
 import { onCreateNodeTemplate } from "../../../_actions/workflow-connections";
 import { toast } from "sonner";
-import { onCreateNewPageInDatabase } from "@app/builder/app/(main)/(pages)/connections/_actions/notion-connection";
-import { postMessageToSlack } from "@app/builder/app/(main)/(pages)/connections/_actions/slack-connection";
+import { onCreateNewPageInDatabase } from "@app/studio/app/(main)/(pages)/connections/_actions/notion-connection";
+import { postMessageToSlack } from "@app/studio/app/(main)/(pages)/connections/_actions/slack-connection";
 
 type Props = {
   currentService: string;
