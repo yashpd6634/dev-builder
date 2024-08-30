@@ -11,6 +11,7 @@ import {
 import { ConnectionProviderProps } from "@ui/providers/connections-provider";
 import { z } from "zod";
 import { getAuthUserDetails, getUserPermissions } from "./queries";
+import db from "@repo/db/client";
 
 export const EditUserProfileSchema = z.object({
   email: z.string().email("Required"),
@@ -128,3 +129,20 @@ export type UserWithPermissionsAndSubAccounts = Prisma.PromiseReturnType<
 
 export type AuthUserWithAgencySigebarOptionsSubAccounts =
   Prisma.PromiseReturnType<typeof getAuthUserDetails>;
+
+const __getUsersWithAgencySubAccountPermissionsSidebarOptions = async (
+  agencyId: string,
+) => {
+  return await db.user.findFirst({
+    where: { Agency: { id: agencyId } },
+    include: {
+      Agency: { include: { SubAccount: true } },
+      Permissions: { include: { SubAccount: true } },
+    },
+  });
+};
+
+export type UsersWithAgencySubAccountPermissionsSidebarOptions =
+  Prisma.PromiseReturnType<
+    typeof __getUsersWithAgencySubAccountPermissionsSidebarOptions
+  >;
