@@ -13,6 +13,7 @@
     "@clerk/themes": "^2.1.21",
     "@notionhq/client": "^2.2.15",
     "@repo/ui": "*",
+    "@types/react-beautiful-dnd": "^13.1.8",
     "@types/uuid": "^10.0.0",
     "@uploadcare/file-uploader": "^1.2.0",
     "@xyflow/react": "^12.0.4",
@@ -20,6 +21,7 @@
     "googleapis": "^140.0.1",
     "next": "14.2.4",
     "react": "^18",
+    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18",
     "stripe": "^16.7.0",
     "uuid": "^10.0.0"

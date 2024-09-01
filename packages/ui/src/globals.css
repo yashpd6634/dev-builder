@@ -70,6 +70,10 @@
   }
 }
 
+.use-automation-zoom-in {
+  animation: automation-zoom-in 0.5s;
+}
+
 @layer base {
   * {
     @apply border-border;

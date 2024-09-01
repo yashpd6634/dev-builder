@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import { Agency, Contact, Plan, User } from "@prisma/client";
+import { TicketDetails } from "@ui/lib/types";
 interface ModalProviderProps {
   children: React.ReactNode;
 }
@@ -8,6 +9,7 @@ interface ModalProviderProps {
 export type ModalData = {
   user?: User;
   agency?: Agency;
+  ticket?: TicketDetails[0];
 };
 
 type ModalContextType = {

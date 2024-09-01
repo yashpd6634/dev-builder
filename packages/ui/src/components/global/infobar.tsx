@@ -79,7 +79,7 @@ const InfoBar = ({ notifications, role, className, subAccountId }: Props) => {
                   <div className="flex gap-2">
                     <Avatar>
                       <AvatarImage
-                        src={notification.User.avatarUrl}
+                        src={notification.User.profileImage}
                         alt="Profile Picture"
                       />
                       <AvatarFallback className="bg-primary">
