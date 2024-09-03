@@ -13,6 +13,7 @@ import { z } from "zod";
 import {
   _getTicketsWithAllRelations,
   getAuthUserDetails,
+  getFunnels,
   getMedia,
   getPipelineDetails,
   getTicketsWithTags,
@@ -209,3 +210,7 @@ export const ContactUserFormSchema = z.object({
   name: z.string().min(1, "Required"),
   email: z.string().email(),
 });
+
+export type FunnelsForSubAccount = Prisma.PromiseReturnType<
+  typeof getFunnels
+>[0];
