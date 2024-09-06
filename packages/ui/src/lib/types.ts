@@ -70,7 +70,7 @@ export type EditorCanvasCardType = {
   type: EditorCanvasTypes;
 };
 
-export type EditorNodeType = {
+export type AutomationEditorNodeType = {
   id: string;
   type: EditorCanvasCardType["type"];
   position: {
@@ -80,13 +80,13 @@ export type EditorNodeType = {
   data: EditorCanvasCardType;
 };
 
-export type EditorNode = EditorNodeType;
+export type AutomationEditorNode = AutomationEditorNodeType;
 
-export type EditorActions =
+export type AutomationEditorActions =
   | {
       type: "LOAD_DATA";
       payload: {
-        elements: EditorNode[];
+        elements: AutomationEditorNode[];
         edges: {
           id: string;
           source: string;
@@ -97,7 +97,7 @@ export type EditorActions =
   | {
       type: "UPDATE_NODE";
       payload: {
-        elements: EditorNode[];
+        elements: AutomationEditorNode[];
       };
     }
   | { type: "REDO" }
@@ -105,7 +105,7 @@ export type EditorActions =
   | {
       type: "SELECTED_ELEMENT";
       payload: {
-        element: EditorNode;
+        element: AutomationEditorNode;
       };
     };
 

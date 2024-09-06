@@ -1,3 +1,5 @@
+"use client";
+
 import { EditorBtns } from "@ui/lib/constant";
 import React, { createContext, Dispatch, useContext, useReducer } from "react";
 import { EditorAction } from "./editor-action";
@@ -10,7 +12,9 @@ export type EditorElement = {
   styles: React.CSSProperties;
   name: string;
   type: EditorBtns;
-  content: EditorElement[] | {};
+  content:
+    | EditorElement[]
+    | { href?: string; innerText?: string; src?: string };
 };
 
 export type Editor = {

@@ -1,6 +1,9 @@
 "use client";
 
-import { EditorActions, EditorNodeType } from "@ui/lib/types";
+import {
+  AutomationEditorActions,
+  AutomationEditorNodeType,
+} from "@ui/lib/types";
 import {
   Dispatch,
   createContext,
@@ -9,29 +12,29 @@ import {
   useReducer,
 } from "react";
 
-export type EditorNode = EditorNodeType;
+export type AutomationEditorNode = AutomationEditorNodeType;
 
-export type Editor = {
-  elements: EditorNode[];
+export type AutomationEditor = {
+  elements: AutomationEditorNode[];
   edges: {
     id: string;
     source: string;
     target: string;
   }[];
-  selectedNode: EditorNodeType;
+  selectedNode: AutomationEditorNodeType;
 };
 
 export type HistoryState = {
-  history: Editor[];
+  history: AutomationEditor[];
   currentIndex: number;
 };
 
-export type EditorState = {
-  editor: Editor;
+export type AutomationEditorState = {
+  editor: AutomationEditor;
   history: HistoryState;
 };
 
-const initialEditorState: EditorState["editor"] = {
+const initialEditorState: AutomationEditorState["editor"] = {
   elements: [],
   selectedNode: {
     data: {
@@ -54,15 +57,15 @@ const initialHistoryState: HistoryState = {
   currentIndex: 0,
 };
 
-const initialState: EditorState = {
+const initialState: AutomationEditorState = {
   editor: initialEditorState,
   history: initialHistoryState,
 };
 
 const editorReducer = (
-  state: EditorState = initialState,
-  action: EditorActions,
-): EditorState => {
+  state: AutomationEditorState = initialState,
+  action: AutomationEditorActions,
+): AutomationEditorState => {
   switch (action.type) {
     case "REDO":
       if (state.history.currentIndex < state.history.history.length - 1) {
@@ -118,44 +121,44 @@ const editorReducer = (
   }
 };
 
-export type EditorContextData = {
+export type AutomationEditorContextData = {
   previewMode: boolean;
   setPreviewMode: (previewMode: boolean) => void;
 };
 
-export const EditorContext = createContext<{
-  state: EditorState;
-  dispatch: Dispatch<EditorActions>;
+export const AutomationEditorContext = createContext<{
+  state: AutomationEditorState;
+  dispatch: Dispatch<AutomationEditorActions>;
 }>({
   state: initialState,
   dispatch: () => undefined,
 });
 
-type EditorProps = {
+type AutomationEditorProps = {
   children: React.ReactNode;
 };
 
-const EditorProvider = (props: EditorProps) => {
+const AutomationEditorProvider = (props: AutomationEditorProps) => {
   const [state, dispatch] = useReducer(editorReducer, initialState);
 
   return (
-    <EditorContext.Provider
+    <AutomationEditorContext.Provider
       value={{
         state,
         dispatch,
       }}
     >
       {props.children}
-    </EditorContext.Provider>
+    </AutomationEditorContext.Provider>
   );
 };
 
-export const useEditor = () => {
-  const context = useContext(EditorContext);
+export const useAutomationEditor = () => {
+  const context = useContext(AutomationEditorContext);
   if (!context) {
     throw new Error("useEditor Hook must be used within the editor Provider");
   }
   return context;
 };
 
-export default EditorProvider;
+export default AutomationEditorProvider;
