@@ -1,15 +1,15 @@
 import { ConnectionProviderProps } from "@ui/providers/connections-provider";
 import { EditorCanvasCardType } from "@ui/lib/types";
-import { EditorState } from "@ui/providers/editor-provider";
-import { getDiscordConnectionUrl } from "@app/studio/app/(main)/(pages)/connections/_actions/discord-connection";
+import { AutomationEditorState } from "@ui/providers/editor-provider";
+import { getDiscordConnectionUrl } from "@app/studio/app/(main)/subaccount/[subaccountId]/automations/connections/_actions/discord-connection";
 import {
   getNotionConnection,
   getNotionDatabase,
-} from "@app/studio/app/(main)/(pages)/connections/_actions/notion-connection";
+} from "@app/studio/app/(main)/subaccount/[subaccountId]/automations/connections/_actions/notion-connection";
 import {
   getSlackConnection,
   listBotChannels,
-} from "@app/studio/app/(main)/(pages)/connections/_actions/slack-connection";
+} from "@app/studio/app/(main)/subaccount/[subaccountId]/automations/connections/_actions/slack-connection";
 import { Option } from "@ui/components/ui/multiple-selector";
 
 export const onDragStart = (
@@ -88,7 +88,7 @@ export const onAddTemplate = (
 
 export const onConnections = async (
   nodeConnection: ConnectionProviderProps,
-  editorState: EditorState,
+  editorState: AutomationEditorState,
   googleFile: any,
 ) => {
   if (editorState.editor.selectedNode.data.title == "Discord") {

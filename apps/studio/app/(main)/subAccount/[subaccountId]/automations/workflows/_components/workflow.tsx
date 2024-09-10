@@ -18,9 +18,10 @@ type Props = {
   description: string;
   id: string;
   publish: boolean | null;
+  subaccuontId: string;
 };
 
-const Workflow = ({ description, id, name, publish }: Props) => {
+const Workflow = ({ description, id, name, publish, subaccuontId }: Props) => {
   const [isPublish, setIsPublish] = useState<boolean>(
     publish == null ? false : publish == false ? false : true,
   );
@@ -37,7 +38,9 @@ const Workflow = ({ description, id, name, publish }: Props) => {
   return (
     <Card className="flex w-full items-center justify-between">
       <CardHeader className="flex flex-col gap-4">
-        <Link href={`/workflows/editor/${id}`}>
+        <Link
+          href={`/subaccount/${subaccuontId}/automations/workflows/editor/${id}`}
+        >
           <div className="flex flex-row gap-2">
             <Image
               src="/googleDrive.png"

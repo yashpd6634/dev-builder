@@ -1,7 +1,7 @@
 "use client";
 import { UserButton } from "@clerk/nextjs";
 import { NotificationWithUser } from "@ui/lib/types";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import {
   Sheet,
@@ -11,11 +11,21 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../ui/sheet";
-import { Bell } from "lucide-react";
+import { Bell, Book, Headphones, Search } from "lucide-react";
 import { Card } from "../ui/card";
 import { Switch } from "../ui/switch";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { ModeToggle } from "./mode-toggle";
+import { useBilling } from "@ui/providers/billing-provider";
+import { onPaymentDetails } from "@app/studio/app/(main)/subaccount/[subaccountId]/automations/billing/_actions/payment-connections";
+import { Input } from "../ui/input";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
+import { usePathname } from "next/navigation";
 
 type Props = {
   notifications: NotificationWithUser | [];
@@ -27,6 +37,20 @@ type Props = {
 const InfoBar = ({ notifications, role, className, subAccountId }: Props) => {
   const [allNotifications, setAllNotifications] = useState(notifications);
   const [showAll, setShowAll] = useState(true);
+
+  const pathname = usePathname();
+
+  const containsAutomations = pathname.includes("automations");
+
+  const { credits, tier, setCredits, setTier } = useBilling();
+
+  const onGetPayment = async () => {
+    const response = await onPaymentDetails();
+    if (response) {
+      setTier(response.tier!);
+      setCredits(response.credits!);
+    }
+  };
 
   const handleClick = () => {
     if (!showAll) {
@@ -43,6 +67,10 @@ const InfoBar = ({ notifications, role, className, subAccountId }: Props) => {
     setShowAll((prev) => !prev);
   };
 
+  useEffect(() => {
+    onGetPayment();
+  }, []);
+
   return (
     <>
       <div
@@ -52,7 +80,47 @@ const InfoBar = ({ notifications, role, className, subAccountId }: Props) => {
         )}
       >
         <div className="flex items-center gap-2 ml-auto">
-          <UserButton afterSignOutUrl="/" />
+          {containsAutomations && (
+            <>
+              <span className="flex items-center gap-2 font-bold">
+                <p className="text-sm font-light text-gray-300">Credits</p>
+                {tier == "Unlimited" ? (
+                  <span>Unlimited</span>
+                ) : (
+                  <span>
+                    {credits}/{tier == "Free" ? "10" : tier == "Pro" && "100"}
+                  </span>
+                )}
+              </span>
+              <span className="flex items-center rounded-full bg-muted px-4">
+                <Search />
+                <Input
+                  placeholder="Quick Search"
+                  className="border-none bg-transparent"
+                />
+              </span>
+            </>
+          )}
+          <TooltipProvider>
+            <Tooltip delayDuration={0}>
+              <TooltipTrigger>
+                <Headphones />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Contact Support</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip delayDuration={0}>
+              <TooltipTrigger>
+                <Book />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Guide</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           <Sheet>
             <SheetTrigger>
               <div className="rounded-full w-9 h-9 bg-purplePrimary flex items-center justify-center text-white">
@@ -115,6 +183,7 @@ const InfoBar = ({ notifications, role, className, subAccountId }: Props) => {
               )}
             </SheetContent>
           </Sheet>
+          <UserButton afterSignOutUrl="/" />
           <ModeToggle />
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { EditorCanvasCardType } from "@ui/lib/types";
-import { useEditor } from "@ui/providers/editor-provider";
+import { useAutomationEditor } from "@ui/providers/editor-provider";
 import React, { useMemo } from "react";
 import { Position, useNodeId } from "@xyflow/react";
 import EditorCanvasIconHelper from "./editor-canvas-card-icon-helper";
@@ -17,7 +17,7 @@ import clsx from "clsx";
 type Props = {};
 
 const EditorCanvasCardSingle = ({ data }: { data: EditorCanvasCardType }) => {
-  const { dispatch, state } = useEditor();
+  const { dispatch, state } = useAutomationEditor();
   const nodeId = useNodeId();
   const logo = useMemo(() => {
     return <EditorCanvasIconHelper type={data.type} />;

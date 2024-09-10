@@ -11,7 +11,7 @@ import {
 } from "@ui/components/ui/tooltip";
 import { UserButton } from "@clerk/nextjs";
 import { useBilling } from "@ui/providers/billing-provider";
-import { onPaymentDetails } from "@app/studio/app/(main)/agency/[agencyId]/(pages)/billing/_actions/payment-connections";
+import { onPaymentDetails } from "@app/studio/app/(main)/subaccount/[subaccountId]/automations/billing/_actions/payment-connections";
 
 type Props = {};
 

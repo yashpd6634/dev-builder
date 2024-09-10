@@ -1,6 +1,4 @@
 import { ClerkProvider } from "@clerk/nextjs";
-import Infobar from "@repo/ui/components/infobar/index";
-import Sidebar from "@repo/ui/components/sidebar/index";
 import { dark } from "@clerk/themes";
 import React from "react";
 
@@ -12,13 +10,7 @@ const Layout = (props: Props) => {
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
       appearance={{ baseTheme: dark }}
     >
-      {/* <div className="flex overflow-hidden h-screen">
-        <Sidebar />
-        <div className="w-full">
-          <Infobar /> */}
-          {props.children}
-        {/* </div>
-      </div> */}
+      {props.children}
     </ClerkProvider>
   );
 };

@@ -5,7 +5,7 @@ import { AccordionContent } from "@ui/components/ui/accordion";
 import MultipleSelector from "@ui/components/ui/multiple-selector";
 import { Connection } from "@ui/lib/types";
 import { useNodeConnections } from "@ui/providers/connections-provider";
-import { EditorState } from "@ui/providers/editor-provider";
+import { AutomationEditorState } from "@ui/providers/editor-provider";
 import { useAutomationStore } from "@repo/store/automation/automation-store";
 import {
   Command,
@@ -51,7 +51,7 @@ const RenderConnectionAccordion = ({
   state,
 }: {
   connection: Connection;
-  state: EditorState;
+  state: AutomationEditorState;
 }) => {
   const {
     title,

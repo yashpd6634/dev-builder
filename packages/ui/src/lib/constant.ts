@@ -119,12 +119,12 @@ export const products = [
 ];
 
 export const menuOptions = [
-  { name: "Dashboard", Component: Home, href: "/dashboard" },
-  { name: "Workflows", Component: Workflows, href: "/workflows" },
-  { name: "Connections", Component: Category, href: "/connections" },
-  { name: "Billing", Component: Payment, href: "/billing" },
-  { name: "Templates", Component: Templates, href: "/templates" },
-  { name: "Settings", Component: Settings, href: "/settings" },
+  { name: "Dashboard", Component: Home, href: `/subaccount/[subaccountId]/automations` },
+  { name: "Workflows", Component: Workflows, href: "/subaccount/[subaccountId]/automations/workflows" },
+  { name: "Connections", Component: Category, href: "/subaccount/[subaccountId]/automations/connections" },
+  { name: "Billing", Component: Payment, href: "/subaccount/[subaccountId]/automations/billing" },
+  { name: "Templates", Component: Templates, href: "/subaccount/[subaccountId]/automations/templates" },
+  // { name: "Settings", Component: Settings, href: "/subaccount/[subaccountId]/automations/settings" },
 ];
 
 export const CONNECTIONS: Connection[] = [

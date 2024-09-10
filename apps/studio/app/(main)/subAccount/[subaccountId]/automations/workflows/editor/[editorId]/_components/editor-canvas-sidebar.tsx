@@ -1,7 +1,7 @@
 "use client";
-import { EditorCanvasTypes, EditorNodeType } from "@ui/lib/types";
+import { EditorCanvasTypes, AutomationEditorNodeType } from "@ui/lib/types";
 import { useNodeConnections } from "@ui/providers/connections-provider";
-import { useEditor } from "@ui/providers/editor-provider";
+import { useAutomationEditor } from "@ui/providers/editor-provider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui/components/ui/tabs";
 
 import React, { useEffect } from "react";
@@ -30,11 +30,11 @@ import RenderOutputAccordion from "./render-output-accordian";
 import { useAutomationStore } from "@repo/store/automation/automation-store";
 
 type Props = {
-  nodes: EditorNodeType[];
+  nodes: AutomationEditorNodeType[];
 };
 
 const EditorCanvasSidebar = ({ nodes }: Props) => {
-  const { state } = useEditor();
+  const { state } = useAutomationEditor();
   const { nodeConnection } = useNodeConnections();
   const { googleFile, setSlackChannels } = useAutomationStore();
   useEffect(() => {

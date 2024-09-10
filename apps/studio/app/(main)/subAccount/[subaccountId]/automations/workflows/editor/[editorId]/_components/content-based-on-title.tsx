@@ -1,6 +1,6 @@
 import { AccordionContent } from "@ui/components/ui/accordion";
 import { ConnectionProviderProps } from "@ui/providers/connections-provider";
-import { EditorState } from "@ui/providers/editor-provider";
+import { AutomationEditorState } from "@ui/providers/editor-provider";
 import { nodeMapper } from "@ui/lib/types";
 import React, { useEffect } from "react";
 import {
@@ -15,7 +15,7 @@ import { onContentChange } from "@ui/lib/editor-utils";
 import GoogleFileDetails from "./google-file-details";
 import GoogleDriveFiles from "./google-drive-files";
 import ActionButton from "./action-button";
-import { getFileMetaData } from "@app/studio/app/(main)/agency/(pages)/connections/_actions/google-connection";
+import { getFileMetaData } from "@app/studio/app/(main)/subaccount/[subaccountId]/automations/connections/_actions/google-connection";
 import axios from "axios";
 import { toast } from "sonner";
 
@@ -34,7 +34,7 @@ interface GroupOption {
 
 type Props = {
   nodeConnection: ConnectionProviderProps;
-  newState: EditorState;
+  newState: AutomationEditorState;
   file: any;
   setFile: (file: any) => void;
   selectedSlackChannels: Option[];
@@ -57,7 +57,7 @@ const ContentBasedOnTitle = ({
       const response: { data: { message: { files: any } } } =
         await axios.get("/api/drive");
       if (response) {
-        console.log(response)
+        console.log(response);
         console.log(response.data.message.files[0]);
         toast.message("Fetched File");
         setFile(response.data.message.files[0]);

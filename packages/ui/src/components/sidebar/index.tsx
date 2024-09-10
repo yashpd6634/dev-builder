@@ -14,19 +14,28 @@ import { Separator } from "@ui/components/ui/separator";
 import { Database, GitBranch, LucideMousePointerClick } from "lucide-react";
 import { ModeToggle } from "@ui/components/global/mode-toggle";
 
-type Props = {};
+type Props = {
+  subaccountId: string;
+};
 
-const MenuOptions = (props: Props) => {
+const MenuOptions = ({ subaccountId }: Props) => {
   const pathName = usePathname();
+
+  const dynamicMenuOptions = menuOptions.map((menuItem) => ({
+    ...menuItem,
+    href: menuItem.href.includes("subaccount")
+      ? menuItem.href.replace("[subaccountId]", subaccountId)
+      : menuItem.href,
+  }));
 
   return (
     <nav className=" dark:bg-black h-screen overflow-scroll  justify-between flex items-center flex-col  gap-10 py-6 px-2">
       <div className="flex items-center justify-center flex-col gap-8">
-        <Link className="flex font-bold flex-row " href="/">
+        <Link className="flex font-bold flex-row" href="/">
           Studio
         </Link>
         <TooltipProvider>
-          {menuOptions.map((menuItem) => (
+          {dynamicMenuOptions.map((menuItem) => (
             <ul key={menuItem.name}>
               <Tooltip delayDuration={0}>
                 <TooltipTrigger>
@@ -76,9 +85,9 @@ const MenuOptions = (props: Props) => {
           </div>
         </div> */}
       </div>
-      <div className="flex items-center justify-center flex-col gap-8">
+      {/* <div className="flex items-center justify-center flex-col gap-8">
         <ModeToggle />
-      </div>
+      </div> */}
     </nav>
   );
 };

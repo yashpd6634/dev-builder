@@ -1,6 +1,6 @@
 "use client";
-import { EditorCanvasCardType, EditorNodeType } from "@ui/lib/types";
-import { useEditor } from "@ui/providers/editor-provider";
+import { EditorCanvasCardType, AutomationEditorNodeType } from "@ui/lib/types";
+import { useAutomationEditor } from "@ui/providers/editor-provider";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   ReactFlow,
@@ -33,12 +33,12 @@ import { onGetNodesEdges } from "../../../_actions/workflow-connections";
 
 type Props = {};
 
-const initialNodes: EditorNodeType[] = [];
+const initialNodes: AutomationEditorNodeType[] = [];
 
 const initialEdges: { id: string; source: string; target: string }[] = [];
 
 const EditorCanvas = (props: Props) => {
-  const { dispatch, state } = useEditor();
+  const { dispatch, state } = useAutomationEditor();
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
   const [isWorkFlowLoading, setIsWorkFlowLoading] = useState<boolean>(false);

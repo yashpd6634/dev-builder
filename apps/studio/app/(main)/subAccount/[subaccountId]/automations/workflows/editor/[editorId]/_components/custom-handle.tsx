@@ -1,4 +1,4 @@
-import { useEditor } from "@ui/providers/editor-provider";
+import { useAutomationEditor } from "@ui/providers/editor-provider";
 import React, { CSSProperties } from "react";
 import { Handle, HandleProps } from "@xyflow/react";
 
@@ -10,7 +10,7 @@ const selector = (s: any) => ({
 });
 
 const CustomHandle = (props: Props) => {
-  const { state } = useEditor();
+  const { state } = useAutomationEditor();
 
   return (
     <Handle
