@@ -79,7 +79,7 @@ const InfoBar = ({ notifications, role, className, subAccountId }: Props) => {
           className,
         )}
       >
-        <div className="flex items-center gap-2 ml-auto">
+        <div className="flex items-center gap-4 ml-auto">
           {containsAutomations && (
             <>
               <span className="flex items-center gap-2 font-bold">
