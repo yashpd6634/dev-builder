@@ -156,6 +156,21 @@ const Container = ({ element }: Props) => {
           },
         });
         break;
+      case "dropdown":
+        dispatch({
+          type: "ADD_ELEMENT",
+          payload: {
+            containerId: id,
+            elementDetails: {
+              content: {},
+              id: v4(),
+              name: "Dropdown",
+              styles: {},
+              type: "dropdown",
+            },
+          },
+        });
+        break;
     }
   };
 

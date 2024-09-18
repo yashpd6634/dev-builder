@@ -7,6 +7,19 @@ import { FunnelPage } from "@prisma/client";
 
 export type DeviceTypes = "Desktop" | "Mobile" | "Tablet";
 
+export type keyValuePairType = {
+  key: string;
+  value: string;
+  subMenu?: keyValuePairType[];
+};
+
+export type dropdownSettings = {
+  activeTab?: string;
+  keyValuePairs?: keyValuePairType[];
+  label?: string;
+  triggerName?: string;
+};
+
 export type EditorElement = {
   id: string;
   styles: React.CSSProperties;
@@ -14,7 +27,12 @@ export type EditorElement = {
   type: EditorBtns;
   content:
     | EditorElement[]
-    | { href?: string; innerText?: string; src?: string };
+    | {
+        href?: string;
+        innerText?: string;
+        src?: string;
+        dropdownSettings?: dropdownSettings;
+      };
 };
 
 export type Editor = {

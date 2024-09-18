@@ -372,24 +372,19 @@ export const upsertSubAccount = async (subAccount: SubAccount) => {
       SidebarOption: {
         create: [
           {
+            name: "Dashboard",
+            icon: "category",
+            link: `/subaccount/${subAccount.id}`,
+          },
+          {
             name: "Launchpad",
             icon: "clipboardIcon",
             link: `/subaccount/${subAccount.id}/launchpad`,
           },
           {
-            name: "Settings",
-            icon: "settings",
-            link: `/subaccount/${subAccount.id}/settings`,
-          },
-          {
             name: "Funnels",
             icon: "pipelines",
             link: `/subaccount/${subAccount.id}/funnels`,
-          },
-          {
-            name: "Media",
-            icon: "database",
-            link: `/subaccount/${subAccount.id}/media`,
           },
           {
             name: "Automations",
@@ -402,14 +397,19 @@ export const upsertSubAccount = async (subAccount: SubAccount) => {
             link: `/subaccount/${subAccount.id}/pipelines`,
           },
           {
+            name: "Media",
+            icon: "database",
+            link: `/subaccount/${subAccount.id}/media`,
+          },
+          {
             name: "Contacts",
             icon: "person",
             link: `/subaccount/${subAccount.id}/contacts`,
           },
           {
-            name: "Dashboard",
-            icon: "category",
-            link: `/subaccount/${subAccount.id}`,
+            name: "Settings",
+            icon: "settings",
+            link: `/subaccount/${subAccount.id}/settings`,
           },
         ],
       },

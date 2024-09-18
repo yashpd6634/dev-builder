@@ -6,6 +6,7 @@ import VideoComponent from "./video";
 import LinkComponent from "./link-component";
 import ContactFormComponent from "./contact-form-component";
 import Checkout from "./checkout";
+import DropdownComponent from "./dropdown";
 
 type Props = {
   element: EditorElement;
@@ -27,9 +28,10 @@ const Recursive = ({ element }: Props) => {
       return <Container element={element} />;
     case "__body":
       return <Container element={element} />;
-
     case "link":
       return <LinkComponent element={element} />;
+    case "dropdown":
+      return <DropdownComponent element={element} />;
     default:
       return null;
   }

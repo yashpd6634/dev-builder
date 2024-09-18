@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ChangeEventHandler } from "react";
+import React, { ChangeEventHandler, useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -36,6 +36,7 @@ import {
 } from "@ui/components/ui/select";
 import { useEditor } from "@repo/ui/providers/editor/editor-provider";
 import { Slider } from "@ui/components/ui/slider";
+import DropdownSettings from "./dropdown-settings";
 
 type Props = {};
 
@@ -104,6 +105,10 @@ const SettingsTab = (props: Props) => {
                   value={state.editor.selectedElement.content.href}
                 />
               </div>
+            )}
+          {state.editor.selectedElement.type === "dropdown" &&
+            !Array.isArray(state.editor.selectedElement.content) && (
+              <DropdownSettings />
             )}
         </AccordionContent>
       </AccordionItem>
