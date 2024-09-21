@@ -21,25 +21,9 @@ import { EditorBtns } from "@repo/ui/lib/constant";
 import { Badge } from "@ui/components/ui/badge";
 import { EditorElement, useEditor } from "@ui/providers/editor/editor-provider";
 import clsx from "clsx";
-import {
-  Trash,
-  Cloud,
-  CreditCard,
-  Github,
-  Keyboard,
-  LifeBuoy,
-  LogOut,
-  Mail,
-  MessageSquare,
-  Plus,
-  PlusCircle,
-  Settings,
-  User,
-  UserPlus,
-  Users,
-} from "lucide-react";
+import { Trash, UserPlus } from "lucide-react";
 
-import React, { useRef } from "react";
+import React, { useMemo, useRef } from "react";
 
 type Props = {
   element: EditorElement;
@@ -47,6 +31,17 @@ type Props = {
 
 const DropdownComponent = (props: Props) => {
   const { dispatch, state } = useEditor();
+
+  const roleStyles = props.element.roleStyles;
+
+  console.log(roleStyles);
+
+  const getRoleStyle = (role: string) => {
+    if (props.element.id) {
+      console.log(roleStyles?.[role]);
+      return roleStyles?.[role] ?? "";
+    } else return "";
+  };
 
   const handleDragStart = (e: React.DragEvent, type: EditorBtns) => {
     if (type === null) return;
@@ -90,6 +85,7 @@ const DropdownComponent = (props: Props) => {
 
   return (
     <div
+      id={props.element.id}
       style={styles}
       draggable
       onDragStart={(e) => handleDragStart(e, "dropdown")}
@@ -114,30 +110,54 @@ const DropdownComponent = (props: Props) => {
       {!Array.isArray(props.element.content) && (
         // (state.editor.previewMode || state.editor.liveMode) &&
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+          <DropdownMenuTrigger
+            className={getRoleStyle("dropdown-menu-trigger")}
+            asChild
+          >
             <Button variant="outline">{dropdownTriggerName}</Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56">
+          <DropdownMenuContent
+            className={getRoleStyle("dropdown-menu-content")}
+          >
             {dropdownLabel && (
               <>
-                <DropdownMenuLabel>{dropdownLabel}</DropdownMenuLabel>
-                <DropdownMenuSeparator />
+                <DropdownMenuLabel
+                  className={getRoleStyle("dropdown-menu-label")}
+                >
+                  {dropdownLabel}
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator
+                  className={getRoleStyle("dropdown-menu-separator")}
+                />
               </>
             )}
             {activeTab === "menu" && (
               <>
-                <DropdownMenuGroup>
+                <DropdownMenuGroup
+                  className={getRoleStyle("dropdown-menu-group")}
+                >
                   {keyValuePairs.map((pair) =>
                     pair.subMenu && pair.subMenu.length > 0 ? (
                       <DropdownMenuSub>
-                        <DropdownMenuSubTrigger>
+                        <DropdownMenuSubTrigger
+                          className={getRoleStyle("dropdown-menu-sub-trigger")}
+                        >
                           <UserPlus className="mr-2 h-4 w-4" />
                           <span>{pair.key}</span>
                         </DropdownMenuSubTrigger>
                         <DropdownMenuPortal>
-                          <DropdownMenuSubContent>
+                          <DropdownMenuSubContent
+                            className={getRoleStyle(
+                              "dropdown-menu-sub-content",
+                            )}
+                          >
                             {pair.subMenu.map((sub, subIndex) => (
-                              <DropdownMenuItem key={sub.key}>
+                              <DropdownMenuItem
+                                key={sub.key}
+                                className={getRoleStyle(
+                                  "dropdown-menu-sub-item",
+                                )}
+                              >
                                 <span>{sub.value}</span>
                               </DropdownMenuItem>
                             ))}
@@ -145,7 +165,11 @@ const DropdownComponent = (props: Props) => {
                         </DropdownMenuPortal>
                       </DropdownMenuSub>
                     ) : (
-                      <DropdownMenuItem key={pair.key} textValue={pair.value}>
+                      <DropdownMenuItem
+                        key={pair.key}
+                        textValue={pair.value}
+                        className={getRoleStyle("dropdown-menu-item")}
+                      >
                         <span>{pair.key}</span>
                       </DropdownMenuItem>
                     ),

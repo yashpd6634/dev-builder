@@ -25,6 +25,9 @@ export type EditorElement = {
   styles: React.CSSProperties;
   name: string;
   type: EditorBtns;
+  roleStyles?: {
+    [role: string]: string;
+  };
   content:
     | EditorElement[]
     | {

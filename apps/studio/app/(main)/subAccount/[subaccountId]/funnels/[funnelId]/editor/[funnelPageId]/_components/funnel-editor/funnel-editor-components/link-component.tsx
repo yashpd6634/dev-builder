@@ -15,6 +15,17 @@ type Props = {
 const LinkComponent = (props: Props) => {
   const { dispatch, state } = useEditor();
 
+  const roleStyles = props.element.roleStyles;
+
+  console.log(props);
+
+  const getRoleStyle = (role: string) => {
+    if (props.element.id) {
+      console.log(roleStyles?.[role]);
+      return roleStyles?.[role] ?? "";
+    } else return "";
+  };
+
   const handleDragStart = (e: React.DragEvent, type: EditorBtns) => {
     if (type === null) return;
     e.dataTransfer.setData("componentType", type);
@@ -64,12 +75,16 @@ const LinkComponent = (props: Props) => {
         )}
       {!Array.isArray(props.element.content) &&
         (state.editor.previewMode || state.editor.liveMode) && (
-          <Link href={props.element.content.href || "#"}>
+          <Link
+            className={getRoleStyle("link")}
+            href={props.element.content.href || "#"}
+          >
             {props.element.content.innerText}
           </Link>
         )}
       {!state.editor.previewMode && !state.editor.liveMode && (
         <span
+          className={getRoleStyle("link")}
           contentEditable={!state.editor.liveMode}
           onBlur={(e) => {
             const spanElement = e.target as HTMLSpanElement;

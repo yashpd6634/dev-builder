@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ChangeEventHandler, useState } from "react";
+import React from "react";
 import {
   Accordion,
   AccordionContent,
@@ -37,11 +37,31 @@ import {
 import { useEditor } from "@repo/ui/providers/editor/editor-provider";
 import { Slider } from "@ui/components/ui/slider";
 import DropdownSettings from "./dropdown-settings";
+import RoleBasedStyleEditor from "./role-based-style-editor";
 
 type Props = {};
 
 const SettingsTab = (props: Props) => {
   const { state, dispatch } = useEditor();
+
+  const handleRoleBasedSaveStyles = (role: string, css: string) => {
+    const roleStyles = {
+      ...state.editor.selectedElement.roleStyles,
+      [role]: css, // Store the styles for the specific role
+    };
+
+    console.log(roleStyles);
+
+    dispatch({
+      type: "UPDATE_ELEMENT",
+      payload: {
+        elementDetails: {
+          ...state.editor.selectedElement,
+          roleStyles: roleStyles,
+        },
+      },
+    });
+  };
 
   const handleOnChanges = (e: any) => {
     const styleSettings = e.target.id;
@@ -589,6 +609,22 @@ const SettingsTab = (props: Props) => {
               value={state.editor.selectedElement.styles.flexDirection}
             />
           </div>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="Custom CSS" className="px-6 py-0  ">
+        <AccordionTrigger className="!no-underline">
+          Custom CSS
+        </AccordionTrigger>
+        <AccordionContent>
+          {state.editor.selectedElement.type && (
+            <div className="flex flex-col gap-4">
+              <Label className="text-muted-foreground"> CSS Editor</Label>
+              <RoleBasedStyleEditor
+                onSaveStyles={handleRoleBasedSaveStyles}
+                type={state.editor.selectedElement.type}
+              />
+            </div>
+          )}
         </AccordionContent>
       </AccordionItem>
     </Accordion>
