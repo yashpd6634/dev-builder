@@ -34,11 +34,8 @@ const DropdownComponent = (props: Props) => {
 
   const roleStyles = props.element.roleStyles;
 
-  console.log(roleStyles);
-
   const getRoleStyle = (role: string) => {
     if (props.element.id) {
-      console.log(roleStyles?.[role]);
       return roleStyles?.[role] ?? "";
     } else return "";
   };

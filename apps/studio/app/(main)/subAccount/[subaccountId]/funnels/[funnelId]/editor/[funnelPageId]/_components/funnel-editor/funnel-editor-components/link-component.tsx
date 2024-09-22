@@ -17,11 +17,8 @@ const LinkComponent = (props: Props) => {
 
   const roleStyles = props.element.roleStyles;
 
-  console.log(props);
-
   const getRoleStyle = (role: string) => {
     if (props.element.id) {
-      console.log(roleStyles?.[role]);
       return roleStyles?.[role] ?? "";
     } else return "";
   };

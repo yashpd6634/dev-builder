@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -104,6 +104,10 @@ const DropdownSettings = (props: Props) => {
     setFormData({ ...formData, keyValuePairs: updatedPairs });
   };
 
+  const handleInputChange = (field: string, value: string) => {
+    setFormData({ ...formData, [field]: value });
+  };
+
   const handleChangeCustomValues = () => {
     console.log(formData);
 
@@ -123,9 +127,19 @@ const DropdownSettings = (props: Props) => {
     });
   };
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData({ ...formData, [field]: value });
-  };
+  useEffect(() => {
+    console.log(state.editor.selectedElement.content);
+    if (!Array.isArray(state.editor.selectedElement.content)) {
+      setFormData(
+        state.editor.selectedElement.content.dropdownSettings ?? {
+          keyValuePairs: [{ key: "", value: "", subMenu: [] }],
+          label: "Pedro Duarte",
+          triggerName: "Pedro Duarte",
+          activeTab: "menu",
+        },
+      );
+    }
+  }, [state.editor.selectedElement]);
 
   return (
     <div className="flex flex-col gap-2">

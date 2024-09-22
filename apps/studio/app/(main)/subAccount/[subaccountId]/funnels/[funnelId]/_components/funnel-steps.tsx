@@ -91,6 +91,7 @@ const FunnelSteps = ({ funnel, funnelId, pages, subaccountId }: Props) => {
     });
 
     toast({
+      variant: "success",
       title: "Success",
       description: "Saved page order",
     });

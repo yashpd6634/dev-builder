@@ -30,7 +30,7 @@ export default function RootLayout({
           <BillingProvider>
             <ModalProvider>
               {children}
-              <Toaster />
+              <Toaster richColors />
             </ModalProvider>
           </BillingProvider>
         </ThemeProvider>

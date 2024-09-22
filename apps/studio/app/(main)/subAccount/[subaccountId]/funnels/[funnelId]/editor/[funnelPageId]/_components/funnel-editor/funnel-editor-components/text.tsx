@@ -23,6 +23,8 @@ const TextComponent = ({ element }: Props) => {
     });
   };
   const styles = element.styles;
+  console.log(styles);
+  console.log((styles as Record<string, any>)["font-weight"]);
 
   const handleOnClickBody = (e: React.MouseEvent) => {
     e.stopPropagation();
